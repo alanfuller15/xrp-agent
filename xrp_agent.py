@@ -392,8 +392,9 @@ def study(history, config, spread_per_side, train_frac=0.7):
 # --------------------------------------------------------------------------- live trading
 
 def quantize(qty, increment):
-    inc = Decimal(str(increment))
-    return str(Decimal(str(qty)).quantize(inc, rounding=ROUND_DOWN) if inc < 1 else (Decimal(str(qty)) // inc) * inc)
+    # Robinhood sends increments with trailing zeros ("0.001000000000000000"); round DOWN to the increment's value.
+    inc = Decimal(str(increment)).normalize()
+    return format(((Decimal(str(qty)) // inc) * inc).normalize(), "f")
 
 
 def wait_filled(client, order_id, timeout_s=120):

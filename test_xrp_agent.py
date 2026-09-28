@@ -183,7 +183,7 @@ class FakeRobinhood:
         self.cash, self.xrp, self.orders = cash, 0.0, {}
 
     def trading_pair(self):
-        return {"asset_increment": "0.000001", "min_order_size": "0.1"}
+        return {"asset_increment": "0.001000000000000000", "min_order_size": "0.100000000000000000"}   # as Robinhood returns them
 
     def account(self):
         return {"buying_power": str(self.cash), "status": "active"}
@@ -244,6 +244,9 @@ def test_run_requires_confirm_live():
 def test_quantize_rounds_down():
     assert X.quantize(12.3456789, "0.000001") == "12.345678"
     assert X.quantize(12.9, "1") == "12"
+    # the increment exactly as Robinhood returns it for XRP-USD
+    assert X.quantize(66.52316789, "0.001000000000000000") == "66.523"
+    assert X.quantize(100.0, "0.001000000000000000") == "100"
 
 
 if __name__ == "__main__":
