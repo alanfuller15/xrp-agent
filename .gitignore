@@ -8,3 +8,4 @@ STOP
 config.json
 *.csv
 __pycache__/
+bot.log
