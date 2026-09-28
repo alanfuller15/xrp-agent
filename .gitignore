@@ -1,0 +1,10 @@
+# never commit keys, account state or trade logs
+rh_private_key.txt
+*.key
+agent_state.json
+trades.csv
+study.json
+STOP
+config.json
+*.csv
+__pycache__/

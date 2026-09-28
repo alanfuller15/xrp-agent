@@ -1,0 +1,9 @@
+{
+ "budget_usd": 100.0,
+ "reinvest_profits": true,
+ "average_minutes": 240.0,
+ "max_round_trip_spread": 0.03,
+ "extra_fee": 0.0,
+ "stop_loss": 0.0,
+ "explore_min": 0.05
+}
